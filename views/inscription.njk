@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+  <h2 style="text-align: center">Créer un compte</h2>
+  <p>Si vous ne possédez pas encore de compte, veuillez vous inscrire ci-dessous.</p>
+   <form action="/formins" method="get">
+    <fieldset>
+        <legend>Création de compte</legend>
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px">
+          <label for="pseudo" style="width:93px">Pseudo :</label>
+          <input id="pseudo" name="pseudo" type="text" placeholder="VotrePseudo" required>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px">
+          <label for="email" style="width:93px">E-mail :</label>
+          <input id="email" name="email" type="email" placeholder="votremail@exemple.com" required>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px">
+          <label for="password" style="width:93px">Mot de passe :</label>
+          <input id="password" name="password" type="password" required minlength="6" placeholder="Min. 6 caractères" required>
+        </div>
+      </fieldset>
+    
+      <div class="form-actions" style="margin-top:5px">
+        <button type="submit">Créer le compte</button>
+        <button type="reset">Réinitialiser</button>
+      </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+
+{% block title %}{{ notes[0].vinlibelle }}{% endblock %}
+
+
+{% block content %}
+  <h2>{{ notes[0].vinlibelle }} ({{ notes[0].millenaire }}) par {{ notes[0].vigneron }}</h2>
+
+
+
+    <ul>
+    {% for note in notes %}
+      {% if note.note==null %}
+        <p>Ce vin ne possède pas encore d'avis. <br> Soyez le premier à en laisser un ! </p>
+      {% endif %}
+
+      {% if note.note!=null %}
+        <li style="margin-top:5px; line-height:1.5">La note de <span style="color:rgba(159, 0, 0, 1); font-weight:bold ">
+          {{ note.note }} / 5 </span> 
+          a été laissée par <span style="color:rgba(159, 0, 0, 1)"> {{ note.pseudo }} </span> le  {{ note.datenote }} {% if note.commentaire==null %}.{% endif %}
+          {% if note.commentaire!=null %} avec le commentaire suivant : <br>
+            <span style="border-radius:10px; padding-left:5px; padding-right:5px; padding-bottom: 2px; border:1px; border-style:solid; background-color:rgba(220, 168, 168, 1)">
+              {{ note.commentaire }} 
+            </span>
+          {% endif %}
+        </li>
+      {% endif %}    
+    {% endfor %} 
+    </ul>
+
+
+  {% set mylinkcom = monurl+"/formnote" %}
+  <form action={{mylinkcom}} method="get">
+    <fieldset style="margin-bottom:0px; margin-top:30px">
+        <legend style="border-radius:10px; padding-left:7px; padding-right:7px; padding-bottom:2px;padding-top:2px;border:1px; border-style:solid; background-color:rgba(159, 0, 0, 1); color:rgba(255, 255, 255, 1); font-weight:bold">Donnez votre avis sur ce vin</legend>
+        <p style="margin-top:0px; color: #585858ff; font-style:italic">Attention, les autres utilisateurs verront votre note, votre pseudo ainsi que votre commentaire. <br> Vous devez être connecté pour pouvoir envoyer un avis.</p>
+
+          <p style="margin-bottom:0px">Quelle note voudriez-vous donner à ce vin ? </p>
+          <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:3px">
+            <label><input name="note" type="radio" value="1" required> 1/5</label>
+            <label><input name="note" type="radio" value="2"> 2/5</label>
+            <label><input name="note" type="radio" value="3"> 3/5</label>
+            <label><input name="note" type="radio" value="4"> 4/5</label>
+            <label><input name="note" type="radio" value="5"> 5/5</label>
+          </div>
+
+          <label for="comments" style="display:block; margin-top:15px">Désirez-vous laisser un commentaire ?</label>
+          <textarea id="comments" name="comments" rows="4" placeholder="Vos remarques sur le vin ..."></textarea>
+          
+
+      </fieldset>
+      
+      <div class="form-actions" style="margin-top:5px">
+        <button type="submit">Envoyer</button>
+        <button type="reset">Réinitialiser</button>
+      </div>
+    </form>
+{% endblock %}

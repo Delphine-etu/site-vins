@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block title %}Vins{% endblock %}
+
+{% block content %}
+  <h2 style="text-align: center">Rechercher le vin</h2>
+  <p>Vous pouvez ci-dessous rechercher un vin. <br> Les champs non-remplis ne seront pas appliqués. </p>
+   <form action="/formvin" method="get">
+    <fieldset>
+        <legend>Quel vin vous intéresse ?</legend>
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px">
+          <label for="libelle" style="width:85px">Nom du vin :</label>
+          <input id="libelle" name="libelle" type="text" placeholder="ex : Muscadet Coteaux de la Loire">
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px">
+          <label for="millesime" style="width:85px">Millésime :</label>
+          <input id="millesime" name="millesime" type="text" placeholder="ex : 2024">
+        </div>
+          
+        <div style="display:flex; flex-wrap:wrap, justify-content:flex-start; gap:5px; margin-top:7px;">
+          <label for="vigneron" style="width:85px">Vignoble :</label>
+          <input id="vigneron" name="vigneron" type="text" placeholder="ex : Domaine des Galloires">
+        </div>
+      </fieldset>
+    
+      <div class="form-actions" style="margin-top:5px">
+        <button type="submit">Rechercher</button>
+        <button type="reset">Réinitialiser</button>
+      </div>
+    </form>
+{% endblock %}

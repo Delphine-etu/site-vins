@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Mon site{% endblock %}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header style="background-color:rgb(117, 33, 33)">
+    <h1 style="text-align: center; color:rgb(255, 255, 255)">Mon Application</h1>
+    <nav>
+      <a href="/" style="color:rgb(230, 230, 230)">Accueil</a>
+      <a href="/inscription" style="color:rgb(230, 230, 230)">Créer un compte</a>
+      <a href="/connexion" style="color:rgb(230, 230, 230)">Se connecter</a>
+      <a href="/vins" style="color:rgb(230, 230, 230)">Vins</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer style="position:fixed; bottom:0px; width:100%">
+    <p style="text-align: center; margin-bottom:5px ">© 2025 - Mon App</p>
+  </footer>
+</body>
+</html>

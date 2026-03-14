@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block title %}Se connecter{% endblock %}
+
+
+{% block content %}
+  <h2>Liste des vins et avis</h2>
+
+  {% if vins=="" %}
+    <p>Aucun vin ne correspond à votre recherche. </p>
+  {% endif %}
+
+  {% if vins!="" %}
+    <ul>
+
+    {% for vin in vins %}
+      {% set mylink = "/vins/"+vin.idvin %}
+      <li>
+        {{ vin.vinlibelle }} ({{ vin.millenaire }}) par {{ vin.vigneron }}
+        {% if vin.note!=null %}
+          , noté en moyenne : <span style="color:rgba(159, 0, 0, 1); font-weight:bold ">  {{ vin.note }} / 5 </span>
+        {% endif %}
+        <a href={{mylink}} style="margin-left:5px">Voir les avis</a>
+      </li>
+    {% endfor %}
+
+    </ul>
+   {% endif %}
+  
+
+
+{% endblock %}
